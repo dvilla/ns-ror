@@ -9,6 +9,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'haml'
   gem 'uglifier', '>= 1.0.3'
+  gem 'haml-rails'
 end
 
 group :test do
@@ -20,7 +21,9 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
 end
 
 gem 'jquery-rails'
-gem 'haml-rails'
+gem 'devise'
+gem 'twitter-bootstrap-rails'
