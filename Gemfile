@@ -27,3 +27,5 @@ end
 gem 'jquery-rails'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
+
+gem 'ns-library', :path => '../ns-library'
