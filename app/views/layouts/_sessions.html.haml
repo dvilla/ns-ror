@@ -1,9 +1,7 @@
 %ul.nav.pull-right
   - unless admin_signed_in?
-    %li= link_to "Sign up", new_admin_registration_path, class: 'btn btn-mini'
     %li.divider-vertical
-    %li= link_to content_tag(:i, '', class: 'icon-off') + "Sign in", new_admin_session_path, class: 'btn btn-mini'
-    %li= link_to content_tag(:i, '', class: 'icon-off') + "Sign in with google", admin_omniauth_authorize_path(:google_oauth2), class: 'btn btn-mini'
+    %li= link_to content_tag(:i, '', class: 'icon-off') + "Sign in with google", admin_omniauth_authorize_path(:google_oauth2)
   - else
     %li
       %a
