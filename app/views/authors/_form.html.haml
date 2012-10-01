@@ -1,0 +1,18 @@
+= form_for(@author, html: {class: 'form-horizontal' }) do |f|
+  - if @author.errors.any?
+    .error_explanation
+      %h2
+        = pluralize(@author.errors.count, "error")
+        prohibited this author from being saved:
+
+      %ul
+      - @author.errors.full_messages.each do |msg|
+        %li= msg
+
+  .control-group
+    = f.label :name, 'name', class: 'control-label'
+    .controls
+      = f.text_field :name
+  .control-group
+    .controls
+      = f.submit 'save', class: 'btn'

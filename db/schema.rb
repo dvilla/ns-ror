@@ -34,20 +34,20 @@ ActiveRecord::Schema.define(:version => 20121001200432) do
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
-  create_table "ns_library_author_books", :force => true do |t|
+  create_table "author_books", :force => true do |t|
     t.integer  "author_id",  :null => false
     t.integer  "book_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "ns_library_authors", :force => true do |t|
+  create_table "authors", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "ns_library_books", :force => true do |t|
+  create_table "books", :force => true do |t|
     t.string   "title"
     t.integer  "isbn"
     t.text     "description"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20121001200432) do
     t.datetime "updated_at",   :null => false
   end
 
-  create_table "ns_library_publishers", :force => true do |t|
+  create_table "publishers", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

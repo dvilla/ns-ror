@@ -6,7 +6,11 @@ NsRor::Application.routes.draw do
 
   root to: "home#index"
 
-  mount NsLibrary::Engine => '/library'
+  #mount NsLibrary::Engine => '/library'
+
+
+  resources :authors
+  resources :books
 
   namespace :admin do
   end
