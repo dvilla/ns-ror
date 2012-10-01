@@ -16,3 +16,4 @@
 .rvmrc
 *.swp
 *.sop
+config/initializers/dev_env.rb

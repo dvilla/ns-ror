@@ -31,3 +31,4 @@ gem 'twitter-bootstrap-rails'
 gem 'ns-library', :path => '../ns-library'
 
 gem 'simple-navigation-bootstrap'
+gem 'omniauth-google-oauth2'

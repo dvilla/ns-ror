@@ -1,6 +1,6 @@
 NsRor::Application.routes.draw do
   get "admin/index"
-  devise_for :admins#, controllers: { sessions: 'admins/sessions'}
+  devise_for :admins, controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}
 
   get "home/index"
 
