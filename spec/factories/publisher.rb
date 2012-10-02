@@ -4,6 +4,6 @@ FactoryGirl.define do
   end
 
   factory :invalid_publisher, parent: :publisher do
-    title ''
+    name ''
   end
 end
