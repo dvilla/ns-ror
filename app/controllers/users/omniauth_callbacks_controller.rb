@@ -1,6 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
-    @user = Admin.find_for_google_oauth2(request.env['omniauth.auth'])
+    @user = User.find_for_google_oauth2(request.env['omniauth.auth'])
     if @user.nil?
       flash[:alert] = 'Invalid domain name'
       redirect_to root_path

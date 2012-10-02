@@ -1,10 +1,17 @@
 %ul.nav.pull-right
-  - unless admin_signed_in?
-    %li.divider-vertical
-    %li= link_to content_tag(:i, '', class: 'icon-off') + "Sign in with google", admin_omniauth_authorize_path(:google_oauth2)
-  - else
+  - if user_signed_in?
+    %li
+      %a
+        Welcome 
+        = current_user.name
+    %li= link_to 'Sign out', destroy_user_session_path, method: :delete
+  - elsif admin_signed_in?
     %li
       %a
         Welcome 
         = current_admin.name
     %li= link_to 'Sign out', destroy_admin_session_path, method: :delete
+  - else 
+    %li= link_to content_tag(:i, '', class: 'icon-off') + "Sign in with google", user_omniauth_authorize_path(:google_oauth2)
+    %li.divider-vertical
+    %li= link_to "Sign in Admin", new_admin_session_path
