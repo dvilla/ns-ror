@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121002184057) do
+ActiveRecord::Schema.define(:version => 20121002214222) do
+
+  create_table "admin_rols", :force => true do |t|
+    t.integer "rol_id"
+    t.integer "user_id"
+  end
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -57,6 +62,12 @@ ActiveRecord::Schema.define(:version => 20121002184057) do
   end
 
   create_table "ns_library_publishers", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "rols", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
