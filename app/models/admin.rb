@@ -8,6 +8,6 @@ class Admin < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
 
-  has_many :admins_rols
-  has_many :rols, through: :admin_rols
+  has_many :admins_roles
+  has_many :roles, through: :admin_roles
 end

@@ -13,8 +13,8 @@
 
 ActiveRecord::Schema.define(:version => 20121002214222) do
 
-  create_table "admin_rols", :force => true do |t|
-    t.integer "rol_id"
+  create_table "admin_roles", :force => true do |t|
+    t.integer "role_id"
     t.integer "user_id"
   end
 
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20121002214222) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "rols", :force => true do |t|
+  create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

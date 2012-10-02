@@ -26,6 +26,6 @@ class User < ActiveRecord::Base
 
   private
   def self.valid_user? user
-    user.match(/@nearsoft.com/) == nil ? false : true
+    /@nearsoft.com/ =~ user
   end
 end
