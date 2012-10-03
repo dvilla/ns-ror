@@ -6,8 +6,8 @@ end
 
 When /^I fill the form with the name (.*?)$/ do |name|
   @name = name
-  fill_in 'name', with: name
-  click_on 'save'
+  fill_in 'author_name', with: @name
+  click_on 'Save'
 end
 
 Then /^I should see the new author information$/ do
@@ -26,8 +26,8 @@ end
 
 When /^I change his name$/ do
   @name = 'Ernesto'
-  fill_in 'name', with: @name
-  click_on 'save'
+  fill_in 'author_name', with: @name
+  click_on 'Save'
 end
 
 Then /^I see the author with the new name$/ do

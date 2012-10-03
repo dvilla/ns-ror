@@ -2,6 +2,12 @@ Feature: Manage authors
 		As a user
 		I want to be able to manage authors
 
+		Background: Login to library with an Admin session
+				Given I click on the "Sign in Admin" button
+				When I fill the form with my admin credentials
+				Then I see the library options in menu
+				
+
 		Scenario: New author
 			Given I am on the new author page 
 			When I fill the form with the name "Fulanito Perez"
