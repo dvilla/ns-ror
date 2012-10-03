@@ -6,4 +6,10 @@ FactoryGirl.define do
     password 'admin123'
     password_confirmation 'admin123'
   end
+
+  factory :invalid_admin, parent: :admin do
+    email ''
+    password ''
+    password_confirmation 'admin123'
+  end
 end

@@ -28,7 +28,8 @@
           =link_to image_tag('ns.png'), root_path, class: 'brand'
           .container.nav-collapse
             = render_navigation expand_all: true, render: :bootstrap
-            = render 'layouts/sessions'
+            %ul.nav.pull-right
+              = render_controls_sessions
 
     .container-fluid
 
