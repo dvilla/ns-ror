@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe AuthorsController do
+  login_admin
 
   ########
   # INDEX
@@ -8,14 +9,14 @@ describe AuthorsController do
   describe '#INDEX' do
     it 'assings all author in @author' do
       @author = FactoryGirl.create(:author)
-      get :index, use_route: :ns_library
+      get :index
       assigns[:authors].should eq([@author])
     end
   end
 
   describe 'GET new' do
     it 'assingn author in @author' do
-      get :new, {use_route: :ns_library}
+      get :new
       assigns[:author].should be_a_new(Author)
     end
   end
