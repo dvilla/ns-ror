@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe AuthorsController do
+describe Admin::AuthorsController do
   login_admin
 
   ########
@@ -9,14 +9,14 @@ describe AuthorsController do
   describe '#INDEX' do
     it 'assings all author in @author' do
       @author = FactoryGirl.create(:author)
-      get :index
+      get :index, { use_route: :admin }
       assigns[:authors].should eq([@author])
     end
   end
 
   describe 'GET new' do
     it 'assingn author in @author' do
-      get :new
+      get :new, { use_route: :admin }
       assigns[:author].should be_a_new(Author)
     end
   end
@@ -27,7 +27,7 @@ describe AuthorsController do
   describe '#SHOW' do
     before(:each) do
       @author = FactoryGirl.create(:author)
-      get :show, {id: @author, use_route: :ns_library}
+      get :show, {id: @author, use_route: :admin}
     end
     it 'assings author in @author' do
       assigns[:author].should eq(@author)
@@ -47,7 +47,7 @@ describe AuthorsController do
 
     before(:each) do
       @author = FactoryGirl.create(:author)
-      get :edit, {id: @author, use_route: :ns_library }
+      get :edit, {id: @author, use_route: :admin }
     end
 
     it 'assing author in @author' do
@@ -68,12 +68,12 @@ describe AuthorsController do
     context 'with valid attributes' do
 
       it 'saves the new author in database' do
-        expect{ post :create, { author: FactoryGirl.attributes_for(:author), use_route: :ns_library }}.to change(Author, :count).by(1)
+        expect{ post :create, { author: FactoryGirl.attributes_for(:author) }}.to change(Author, :count).by(1)
       end
 
       it 'redirects to the show page' do
         @author = FactoryGirl.attributes_for(:author)
-        post :create, { author: @author, use_route: :ns_library	}
+        post :create, { author: @author, use_route: :admin	}
         response.should redirect_to Author.last
       end
 
@@ -82,12 +82,12 @@ describe AuthorsController do
     context 'with invalid attributes' do
 
       it 'not saves the new author in database' do
-        expect{ post :create, { author: FactoryGirl.build(:invalid_author), use_route: :ns_library }}.to_not change(Author, :count)
+        expect{ post :create, { author: FactoryGirl.build(:invalid_author), use_route: :admin }}.to_not change(Author, :count)
       end
 
       it 're-render the new author template' do
         @author = FactoryGirl.build(:author)
-        post :create, { author: @author, use_route: :ns_library }
+        post :create, { author: @author, use_route: :admin }
         response.should render_template(:new)
       end
 
@@ -108,7 +108,7 @@ describe AuthorsController do
     context 'with valid attributes' do
 
       before(:each) do
-        put :update, { id: @author, author: FactoryGirl.attributes_for(:author, name: 'Somebody'), use_route: :ns_library }
+        put :update, { id: @author, author: FactoryGirl.attributes_for(:author, name: 'Somebody'), use_route: :admin }
       end
 
       it 'locate the request author' do
@@ -129,7 +129,7 @@ describe AuthorsController do
     context 'with invalid attributes' do
 
       before(:each) do
-        put :update, { id: @author, author: FactoryGirl.attributes_for(:invalid_author), use_route: :ns_library }
+        put :update, { id: @author, author: FactoryGirl.attributes_for(:invalid_author), use_route: :admin }
       end
 
       it 'locate the request author' do
@@ -156,7 +156,7 @@ describe AuthorsController do
 
     before(:each) do
       @author = FactoryGirl.create(:author)
-      delete :destroy, { id: @author, use_route: :ns_library }
+      delete :destroy, { id: @author, use_route: :admin }
     end
 
     it 'assign author in @author' do

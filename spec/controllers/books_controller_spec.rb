@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BooksController do
+describe Admin::BooksController do
   login_admin
 
   ########
@@ -9,14 +9,14 @@ describe BooksController do
   describe '#INDEX' do
     it 'assings all books in @books' do
       @book = FactoryGirl.create(:book)
-      get :index, use_route: :ns_library
+      get :index, use_route: :admin
       assigns[:books].should eq([@book])
     end
   end
 
   describe 'GET new' do
     it 'assingn book in @book' do
-      get :new, {use_route: :ns_library}
+      get :new, {use_route: :admin}
       assigns[:book].should be_a_new(Book)
     end
   end
@@ -27,7 +27,7 @@ describe BooksController do
   describe '#SHOW' do
     before(:each) do
       @book = FactoryGirl.create(:book)
-      get :show, {id: @book, use_route: :ns_library}
+      get :show, {id: @book, use_route: :admin}
     end
     it 'assings book in @book' do
       assigns[:book].should eq(@book)
@@ -47,7 +47,7 @@ describe BooksController do
 
     before(:each) do
       @book = FactoryGirl.create(:book)
-      get :edit, {id: @book, use_route: :ns_library }
+      get :edit, {id: @book, use_route: :admin }
     end
 
     it 'assing book in @book' do
@@ -68,12 +68,12 @@ describe BooksController do
     context 'with valid attributes' do
 
       it 'saves the new book in database' do
-        expect{ post :create, { book: FactoryGirl.attributes_for(:book), use_route: :ns_library }}.to change(Book, :count).by(1)
+        expect{ post :create, { book: FactoryGirl.attributes_for(:book), use_route: :admin }}.to change(Book, :count).by(1)
       end
 
       it 'redirects to the show page' do
         @book = FactoryGirl.attributes_for(:book)
-        post :create, { book: @book, use_route: :ns_library	}
+        post :create, { book: @book, use_route: :admin	}
         response.should redirect_to Book.last
       end
 
@@ -82,12 +82,12 @@ describe BooksController do
     context 'with invalid attributes' do
 
       it 'not saves the new book in database' do
-        expect{ post :create, { book: FactoryGirl.build(:invalid_book), use_route: :ns_library }}.to_not change(Book, :count)
+        expect{ post :create, { book: FactoryGirl.build(:invalid_book), use_route: :admin }}.to_not change(Book, :count)
       end
 
       it 're-render the new book template' do
         @book = FactoryGirl.build(:book)
-        post :create, { book: @book, use_route: :ns_library }
+        post :create, { book: @book, use_route: :admin }
         response.should render_template(:new)
       end
 
@@ -108,7 +108,7 @@ describe BooksController do
     context 'with valid attributes' do
 
       before(:each) do
-        put :update, { id: @book, book: FactoryGirl.attributes_for(:book, title: 'The new world'), use_route: :ns_library }
+        put :update, { id: @book, book: FactoryGirl.attributes_for(:book, title: 'The new world'), use_route: :admin }
       end
 
       it 'locate the request book' do
@@ -129,7 +129,7 @@ describe BooksController do
     context 'with invalid attributes' do
 
       before(:each) do
-        put :update, { id: @book, book: FactoryGirl.attributes_for(:invalid_book), use_route: :ns_library }
+        put :update, { id: @book, book: FactoryGirl.attributes_for(:invalid_book), use_route: :admin }
       end
 
       it 'locate the request book' do
@@ -156,7 +156,7 @@ describe BooksController do
 
     before(:each) do
       @book = FactoryGirl.create(:book)
-      delete :destroy, { id: @book, use_route: :ns_library }
+      delete :destroy, { id: @book, use_route: :admin }
     end
 
     it 'assign book in @book' do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PublishersController do
+describe Admin::PublishersController do
   login_admin
 
   ########
@@ -9,14 +9,14 @@ describe PublishersController do
   describe '#INDEX' do
     it 'assings all publisher in @publisher' do
       @publisher = FactoryGirl.create(:publisher)
-      get :index
+      get :index, use_route: :admin
       assigns[:publishers].should eq([@publisher])
     end
   end
 
   describe 'GET new' do
     it 'assingn publisher in @publisher' do
-      get :new
+      get :new, use_route: :admin
       assigns[:publisher].should be_a_new(Publisher)
     end
   end
@@ -27,7 +27,8 @@ describe PublishersController do
   describe '#SHOW' do
     before(:each) do
       @publisher = FactoryGirl.create(:publisher)
-      get :show, {id: @publisher }
+      get :show, {id: @publisher,  use_route: :admin
+ }
     end
     it 'assings publisher in @publisher' do
       assigns[:publisher].should eq(@publisher)
@@ -47,7 +48,8 @@ describe PublishersController do
 
     before(:each) do
       @publisher = FactoryGirl.create(:publisher)
-      get :edit, {id: @publisher }
+      get :edit, {id: @publisher, use_route: :admin
+}
     end
 
     it 'assing publisher in @publisher' do
@@ -68,12 +70,12 @@ describe PublishersController do
     context 'with valid attributes' do
 
       it 'saves the new publisher in database' do
-        expect{ post :create, publisher: FactoryGirl.attributes_for(:publisher)}.to change(Publisher, :count).by(1)
+        expect{ post :create, publisher: FactoryGirl.attributes_for(:publisher), use_route: :admin}.to change(Publisher, :count).by(1)
       end
 
       it 'redirects to the show page' do
         @publisher = FactoryGirl.attributes_for(:publisher)
-        post :create, { publisher: @publisher }
+        post :create, { publisher: @publisher, use_route: :admin}
         response.should redirect_to Publisher.last
       end
 
@@ -82,12 +84,12 @@ describe PublishersController do
     context 'with invalid attributes' do
 
       it 'not saves the new publisher in database' do
-        expect{ post :create, { publisher: FactoryGirl.build(:invalid_publisher) }}.to_not change(Publisher, :count)
+        expect{ post :create, { publisher: FactoryGirl.build(:invalid_publisher), use_route: :admin }}.to_not change(Publisher, :count)
       end
 
       it 're-render the new publisher template' do
         @publisher = FactoryGirl.build(:publisher)
-        post :create, { publisher: @publisher }
+        post :create, { publisher: @publisher, use_route: :admin}
         response.should render_template(:new)
       end
 
@@ -108,7 +110,7 @@ describe PublishersController do
     context 'with valid attributes' do
 
       before(:each) do
-        put :update, { id: @publisher, publisher: FactoryGirl.attributes_for(:publisher, name: 'Somebody') }
+        put :update, { id: @publisher, publisher: FactoryGirl.attributes_for(:publisher, name: 'Somebody'), use_route: :admin}
       end
 
       it 'locate the request publisher' do
@@ -129,7 +131,7 @@ describe PublishersController do
     context 'with invalid attributes' do
 
       before(:each) do
-        put :update, { id: @publisher, publisher: FactoryGirl.attributes_for(:invalid_publisher) }
+        put :update, { id: @publisher, publisher: FactoryGirl.attributes_for(:invalid_publisher), use_route: :admin }
       end
 
       it 'locate the request publisher' do
@@ -156,7 +158,7 @@ describe PublishersController do
 
     before(:each) do
       @publisher = FactoryGirl.create(:publisher)
-      delete :destroy, { id: @publisher }
+      delete :destroy, { id: @publisher, use_route: :admin}
     end
 
     it 'assign publisher in @publisher' do

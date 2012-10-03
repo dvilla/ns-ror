@@ -36,15 +36,20 @@
       .row-fluid
         .span12
           - if notice
-            .alert.alert-success
-              %button.close{ 'data-dismiss' => :alert}
-                x
-              = notice
+            .alert-msj
+              .alert.alert-success
+                %button.close{ 'data-dismiss' => :alert}
+                  x
+                = notice
           - if alert
-            .alert.alert-error
-              %button.close{ 'data-dismiss' => :alert}
-              = alert
-          = yield
+            .alert-msj
+              .alert.alert-error
+                %button.close{ 'data-dismiss' => :alert}
+                  x
+                = alert
+
+          .well
+            = yield
 
       %footer
         %p &copy; Nearsoft 2012
