@@ -1,4 +1,4 @@
-Feature: Manage authors
+Feature: Manage authors logged
 		As a user
 		I want to be able to manage authors
 

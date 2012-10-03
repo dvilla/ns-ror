@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe BooksController do
+  login_admin
 
   ########
   # INDEX

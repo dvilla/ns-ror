@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe PublishersController do
+  login_admin
 
   ########
   # INDEX

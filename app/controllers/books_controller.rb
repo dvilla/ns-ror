@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_filter :authenticate_admin!
   # GET /books
   # GET /books.json
   def index
