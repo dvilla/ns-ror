@@ -5,6 +5,9 @@ FactoryGirl.define do
     email 'administrator@admin.com'
     password 'admin123'
     password_confirmation 'admin123'
+    after(:build) do |admin|
+      admin.roles << FactoryGirl.create(:role)
+    end
   end
 
   factory :invalid_admin, parent: :admin do
