@@ -9,15 +9,15 @@
       - @book.errors.full_messages.each do |msg|
         = msg
 
-  .input-append
-    = f.label :title
-    = f.text_field :title
-    %button.btn#search_gbook
-      %i.icon-search
+  .control-group
+    .input-append
+      = f.label :isbn
+      = f.text_field :isbn
+      =link_to content_tag(:i, '', class: 'icon-search'), '#', class: 'btn search_gbook', remote: true
 
   .control-group
-    = f.label :isbn
-    = f.text_field :isbn
+    = f.label :title
+    = f.text_field :title
 
   .control-group
     = f.label :publisher

@@ -82,4 +82,16 @@ class Admin::BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # POST /books/search
+  def search
+    puts '*'*50
+    puts params[:isbn]
+    puts '*'*50
+    @book = GoogleBooks.search(isbn: params[:isbn]).first
+    puts @book
+    respond_to do |format|
+      format.js
+    end
+  end
 end
