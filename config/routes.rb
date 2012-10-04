@@ -11,7 +11,9 @@ NsRor::Application.routes.draw do
 
   namespace :admin do
     resources :authors
-    resources :books
+    resources :books do
+      post :search, on: :collection
+    end
     resources :publishers
   end
 
