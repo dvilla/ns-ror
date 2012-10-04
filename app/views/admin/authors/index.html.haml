@@ -11,10 +11,9 @@
   - @authors.each do |author|
     %tr
       %td= author.name
-      %td= link_to 'Show', author
-      %td= link_to 'Show', author
-      %td= link_to 'Edit', edit_author_path(author)
-      %td= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= link_to 'Show', [:admin, author]
+      %td= link_to 'Edit', edit_admin_author_path(author)
+      %td= link_to 'Destroy', [:admin, author], method: :delete, data: { confirm: 'Are you sure?' }
 - else
   .alert.alert-block
     %h4 Empty list
@@ -22,4 +21,4 @@
 
 %br
 
-= link_to content_tag(:i, '', class: 'icon-plus') + ' New Author', new_author_path, class: 'btn'
+= link_to content_tag(:i, '', class: 'icon-plus') + ' New Author', new_admin_author_path, class: 'btn'

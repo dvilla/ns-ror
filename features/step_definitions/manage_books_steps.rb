@@ -1,10 +1,10 @@
 Given /^I am on the new book page$/ do
-	visit new_book_path
+	visit new_admin_book_path
 end
 
 Given /^I am on the edit book page$/ do
 	@book = FactoryGirl.create(:book)
-	visit edit_book_path(@book)
+	visit edit_admin_book_path(@book)
 end
 
 When /^I fill a form with correct params$/ do
@@ -49,7 +49,7 @@ end
 
 Given /^I am on the index book page$/ do
     FactoryGirl.create(:book)
-	visit books_path
+	visit admin_books_path
 end
 
 When /^I delete a book$/ do
@@ -62,7 +62,7 @@ end
 
 Given /^I see a book$/ do
   @libro = FactoryGirl.create(:book)
-	visit book_path(@libro)
+	visit admin_book_path(@libro)
 end
 
 When /^I want to see index page$/ do

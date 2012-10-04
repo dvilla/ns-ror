@@ -45,7 +45,7 @@ class Admin::PublishersController < ApplicationController
 
     respond_to do |format|
       if @publisher.save
-        format.html { redirect_to @publisher, notice: 'Publisher was successfully created.' }
+        format.html { redirect_to [:admin, @publisher], notice: 'Publisher was successfully created.' }
         format.json { render json: @publisher, status: :created, location: @publisher }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class Admin::PublishersController < ApplicationController
 
     respond_to do |format|
       if @publisher.update_attributes(params[:publisher])
-        format.html { redirect_to @publisher, notice: 'Publisher was successfully updated.' }
+        format.html { redirect_to [:admin, @publisher], notice: 'Publisher was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -77,7 +77,7 @@ class Admin::PublishersController < ApplicationController
     @publisher.destroy
 
     respond_to do |format|
-      format.html { redirect_to publishers_url }
+      format.html { redirect_to admin_publishers_url }
       format.json { head :no_content }
     end
   end

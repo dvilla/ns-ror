@@ -1,7 +1,7 @@
 # Steps definitions for authors
 
 Given /^I am on the new author page$/ do
-  visit new_author_path
+  visit new_admin_author_path
 end
 
 When /^I fill the form with the name (.*?)$/ do |name|
@@ -21,7 +21,7 @@ end
 
 Given /^I am on the edit author page$/ do
   @author = FactoryGirl.create(:author)
-  visit edit_author_path(@author)
+  visit edit_admin_author_path(@author)
 end
 
 When /^I change his name$/ do

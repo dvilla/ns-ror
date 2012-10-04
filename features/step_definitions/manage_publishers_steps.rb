@@ -1,7 +1,7 @@
 # Steps definitions for authors
 
 Given /^I am on the new publisher page$/ do
-  visit new_publisher_path
+  visit new_admin_publisher_path
 end
 
 When /^I fill the publisher form with the name "(.*?)"$/ do |name|
@@ -20,7 +20,7 @@ end
 
 Given /^I am on the edit publisher page of "(.*?)"$/ do |name|
   @publisher = FactoryGirl.create(:publisher, name: name)
-  visit edit_publisher_path(@publisher)
+  visit edit_admin_publisher_path(@publisher)
 end
 
 When /^I change his publisher by "(.*?)"$/ do |name|

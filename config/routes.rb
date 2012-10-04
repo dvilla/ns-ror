@@ -15,6 +15,4 @@ NsRor::Application.routes.draw do
     resources :publishers
   end
 
-  namespace :admin do
-  end
 end

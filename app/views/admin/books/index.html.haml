@@ -21,11 +21,11 @@
     %td= book.publisher.name
     - book.authors.each do |a|
       %td= a.name 
-    %td= link_to 'Show', book, class: 'btn'
+    %td= link_to 'Show', [:admin, book], class: 'btn'
     %td= link_to 'Edit', edit_admin_book_path(book), class: 'btn'
-    %td= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn'
+    %td= link_to 'Delete', [:admin, book], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn'
 
 
 %br
 
-= link_to 'New Book', new_book_path, class: 'btn'
+= link_to 'New Book', new_admin_book_path, class: 'btn'
