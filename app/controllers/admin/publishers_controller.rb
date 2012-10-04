@@ -1,4 +1,5 @@
 class Admin::PublishersController < ApplicationController
+  layout 'admin/application'
   before_filter :authenticate_admin!
   # GET /publishers
   # GET /publishers.json

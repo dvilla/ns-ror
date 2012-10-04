@@ -27,14 +27,17 @@
             %span.icon-bar
           =link_to image_tag('ns.png'), root_path, class: 'brand'
           .container.nav-collapse
-            = render_navigation expand_all: true, render: :bootstrap
+            = render_navigation level: 1, render: :bootstrap, context: :adminl
             %ul.nav.pull-right
               = render_controls_sessions
 
     .container-fluid
 
       .row-fluid
-        .span12
+        .span3
+          .well
+            = render_navigation level: 2, context: :adminl, render: :bootstrap
+        .span9
           - if notice
             .alert.alert-success
               %button.close{ 'data-dismiss' => :alert}
@@ -44,12 +47,11 @@
             .alert.alert-error
               %button.close{ 'data-dismiss' => :alert}
               = alert
-          Admin Layout
 
-          = yield
+          .well= yield
 
       %footer
-        %p &copy; Nearsoft 2012
+        %p.pull-right &copy; Nearsoft 2012
     /
       Javascripts
       \==================================================

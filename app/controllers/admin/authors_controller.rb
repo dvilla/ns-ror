@@ -1,4 +1,5 @@
 class Admin::AuthorsController < ApplicationController
+  layout 'admin/application'
   before_filter :authenticate_admin!
   # GET /authors
   # GET /authors.json

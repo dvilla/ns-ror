@@ -1,4 +1,5 @@
 class Admin::BooksController < ApplicationController
+  layout 'admin/application'
   before_filter :authenticate_admin!
   # GET /books
   # GET /books.json
