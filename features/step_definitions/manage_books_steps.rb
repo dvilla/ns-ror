@@ -18,7 +18,7 @@ When /^I fill a form with correct params$/ do
 end
 
 When /^I fill a form with another params$/ do
-  @another_book = FactoryGirl.build(:book, title: 'Another title', isbn: '1231234567890', description: 'another description', publisher: 'Other publisher')
+  @another_book = FactoryGirl.build(:book, title: 'Another title', isbn: '1234567890123', description: 'another description', publisher: 'Other publisher')
   fill_in 'book_title', with: @another_book.title
   fill_in 'book_isbn', with: @another_book.isbn
   fill_in 'book_description', with: @another_book.description

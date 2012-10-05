@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :book do
-	isbn '0123456789123'
+	isbn '1234567980456'
 	title 'Title1'
 	publisher { "#{FactoryGirl.create(:publisher).name}" }
 	description 'Some description here...'

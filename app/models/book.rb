@@ -1,7 +1,8 @@
 class Book < ActiveRecord::Base
   attr_accessible :description, :isbn, :title, :authors, :publisher
   validates :title, :isbn, :description, presence: true
-  validates :isbn, :numericality => { :only_integer => true} 
+  validates :isbn, numericality: { :only_integer => true} 
+  validates :isbn, length: { is: 13 }
   validates_uniqueness_of :title
   belongs_to :publisher
   has_many :author_books
