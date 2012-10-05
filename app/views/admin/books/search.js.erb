@@ -1,11 +1,7 @@
 <%- if @book %>
-    <% unless @book.isbn.nil? %>
-    $("#book_isbn").val("<%=j @book.isbn %>");
-  <% end %>
-  $("#book_title").val("<%=j @book.title %>");
-  $("#book_publisher").val("<%=j @book.publisher %>");
-  $("#book_page_count").val("<%=j @book.page_count.to_s %>");
-  $("#book_description").val("<%=j @book.description.html_safe %>");
-  $("#book_thumbnail").val("<%=j @book.image_link(zoom: 5) %>");
-  $("#book_authors").val("<%=j @book.authors() %>");
+  $("#book_isbn").val("<%=j @book.isbn unless @book.isbn.nil? %>");
+  $("#book_title").val("<%=j @book.title unless @book.title.nil? %>");
+  $("#book_publisher").val("<%=j @book.publisher unless @book.publisher.nil? %>");
+  $("#book_description").val("<%=j @book.description.html_safe unless @book.description.nil? %>");
+  $("#book_authors").val("<%=j @book.authors() unless @book.authors.nil? %>");
 <%- end %>
