@@ -1,19 +1,20 @@
 %h1 Listing publishers
 
-- unless @publishers
-  %table
-    %tr
-      %th Name
-      %th
-      %th
-      %th
-
-    - @publishers.each do |publisher|
+- if @publishers
+  %table.table.table-striped
+    %thead
       %tr
-        %td= @publisher.name
-        %td= link_to 'Show', [:admin, publisher]
-        %td= link_to 'Edit', edit_admin_publisher_path(publisher)
-        %td= link_to 'Destroy', [:admin, publisher], method: :delete, data: { confirm: 'Are you sure?' }
+        %th Name
+        %th
+        %th
+        %th
+    %tbody
+      - @publishers.each do |publisher|
+        %tr
+          %td= publisher.name
+          %td= link_to 'Show', [:admin, publisher]
+          %td= link_to 'Edit', edit_admin_publisher_path(publisher)
+          %td= link_to 'Destroy', [:admin, publisher], method: :delete, data: { confirm: 'Are you sure?' }
 - else
   .alert.alert-block
     %h4 Empty list

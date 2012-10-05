@@ -1,19 +1,19 @@
 %h1 Listing authors
 
-- unless @authors
-  %table
+- if @authors
+  %table.table.table-striped
     %tr
-      %th
+      %th Author
       %th
       %th
       %th
 
-  - @authors.each do |author|
-    %tr
-      %td= author.name
-      %td= link_to 'Show', [:admin, author]
-      %td= link_to 'Edit', edit_admin_author_path(author)
-      %td= link_to 'Destroy', [:admin, author], method: :delete, data: { confirm: 'Are you sure?' }
+    - @authors.each do |author|
+      %tr
+        %td= author.name
+        %td= link_to 'Show', [:admin, author]
+        %td= link_to 'Edit', edit_admin_author_path(author)
+        %td= link_to 'Destroy', [:admin, author], method: :delete, data: { confirm: 'Are you sure?' }
 - else
   .alert.alert-block
     %h4 Empty list

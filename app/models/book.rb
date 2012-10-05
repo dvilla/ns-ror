@@ -15,6 +15,7 @@ class Book < ActiveRecord::Base
   end
 
   def publisher=(name)
-    self.publisher_id = Publisher.where(name: name) || Publisher.create(name: name)
+    _publisher = Publisher.where(name: name).first || Publisher.create(name: name)
+    self.publisher_id = _publisher.id
   end
 end
