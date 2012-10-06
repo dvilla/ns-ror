@@ -22,6 +22,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'nyan-cat-formatter'
 end
 
 gem 'jquery-rails'
